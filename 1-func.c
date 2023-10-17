@@ -12,7 +12,7 @@
  * @size: Size specifier
  * Return: Number of chars printed
  */
-int printf_ch(va_list types, char buffer[],
+int printf_cha(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char ch = va_arg(types, int);
