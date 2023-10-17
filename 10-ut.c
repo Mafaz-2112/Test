@@ -15,8 +15,7 @@ int is_ex(char c)
 	return (0);
 }
 
-//===================================================================================//
-
+/****************************************************/
 /**
  * append_code - function to Append ascci in hexadecimal code to buffer
  * @buffer: array
@@ -41,7 +40,7 @@ int append_code(char asciiCode, char buffer[], int i)
 	return (3);
 }
 
-//===================================================================================//
+/****************************************************/
 
 /**
  * isDigit - Verifies if a char is a digit
@@ -76,7 +75,7 @@ long int con_si_nu(int size, long int nu)
 	return ((int)nu);
 }
 
-//===================================================================================//
+/****************************************************/
 
 /**
  * convert_size_unsgnd - function to Casts a number to the specified size
