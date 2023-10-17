@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * h_precision - Calculates the precision for printing
- * @format: Formatted string in which to print the arguments
- * @i: List of arguments to be printed.
+ * h_precision - function Calculates the precision for printing
+ * @format: Formatted arguments
+ * @i: List of arguments
  * @list: list of arguments.
  *
- * Return: Precision.
+ * Return: Precision
  */
 
 int h_precision(const char *format, int *i, va_list list)
@@ -21,7 +21,7 @@ int h_precision(const char *format, int *i, va_list list)
 
 	for (c_i += 1; format[c_i] != '\0'; c_i++)
 	{
-		if (is_digit(format[c_i]))
+		if (isDigit(format[c_i]))
 		{
 			precision *= 10;
 			precision += format[c_i] - '0';
