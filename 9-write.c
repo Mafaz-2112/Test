@@ -174,7 +174,7 @@ int write_unsgnd(int is_ne, int end,
 	if (precision > 0 && precision < leen)
 		pad = ' ';
 
-	while (precision > length)
+	while (precision > leen)
 	{
 		buffer[--end] = '0';
 		leen++;
