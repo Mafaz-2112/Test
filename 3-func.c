@@ -2,14 +2,14 @@
 
 /****************** 1. ******************/
 /**
- * printf_poi - Prints the value of a pointer variable
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed.
+ * printf_poi - function to Prints the value of a pointer variable
+ * @types: arguments
+ * @buffer: Buffer 
+ * @flags: flags
+ * @width:  width
+ * @precision:  specification
+ * @size: specifier
+ * Return: function
  */
 int printf_poi(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
@@ -45,8 +45,7 @@ int printf_poi(va_list types, char buffer[],
 		ex_c = ' ', leen++;
 
 	end++;
-
-	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
+	
 	return (write_pointer(buffer, end, leen,
 		width, flags, pad, ex_c, pad_start));
 }
@@ -54,15 +53,16 @@ int printf_poi(va_list types, char buffer[],
 /************************* 2. *************************/
 
 /**
- * printf_bin - Prints an unsigned number
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Numbers of char printed.
+ * printf_bin - function to Prints an unsigned number
+ * @types:  arguments
+ * @buffer: Buffer 
+ * @flags:   active flags
+ * @width:  width.
+ * @precision: specification
+ * @size: specifier
+ * Return: cont
  */
+
 int printf_bin(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
@@ -76,7 +76,7 @@ int printf_bin(va_list types, char buffer[],
 	UNUSED(size);
 
 	num = va_arg(types, unsigned int);
-	mi = 2147483648; /* (2 ^ 31) */
+	mi = 2147483648; 
 	s[0] = num / mi;
 	for (a = 1; a < 32; a++)
 	{
@@ -99,21 +99,21 @@ int printf_bin(va_list types, char buffer[],
 
 /************************* 3. *************************/
 /**
- * print_reverse - Prints reverse string.
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Numbers of chars printed
+ * print_reverse - function to Prints reverse string.
+ * @types: arguments
+ * @buffer: Buffer 
+ * @flags: active flags
+ * @width: width
+ * @precision: specification
+ * @size: specifier
+ * Return: cont
  */
 
 int printf_re(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int a, cont = 0;
-    char *s;
+	char *s;
 
 	UNUSED(buffer);
 	UNUSED(flags);
@@ -143,14 +143,14 @@ int printf_re(va_list types, char buffer[],
 /************************* 4. *************************/
 
 /**
- * printf_37 - Prints a percent sign
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * printf_37 - function to Prints a percent sign
+ * @types: arguments
+ * @buffer: Buffer 
+ * @flags: active flags
+ * @width: width.
+ * @precision: specification
+ * @size: specifier
+ * Return: function
  */
 int printf_37(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
