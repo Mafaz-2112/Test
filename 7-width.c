@@ -14,7 +14,7 @@ int h_width(const char *format, int *i, va_list list)
 	int width = 0;
     int c_i;
     
-	for (c_i = *i + 1; format[c_i] != '\0'; curr_i++)
+	for (c_i = *i + 1; format[c_i] != '\0'; c_i++)
 	{
 		if (isDigit(format[c_i]))
 		{
