@@ -75,14 +75,14 @@ int printf_re(va_list types, char buffer[],
 int printf_ro13(va_list types, char buffer[],
 	int flags, int width, int precision, int size); 
 
-//============================================================================//
+/************************************************/
 
 int h_flags(const char *format, int *i);
 int h_width(const char *format, int *i, va_list list);
 int h_precision(const char *format, int *i, va_list list);
 int h_size(const char *format, int *i);
 
-//============================================================================//
+/************************************************/
 
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
