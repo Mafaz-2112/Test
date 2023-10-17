@@ -1,15 +1,15 @@
 #include "main.h"
 /**
- * h_printf - Prints an argument based on its type
- * @fmt: Formatted string in which to print the arguments.
- * @list: List of arguments to be printed.
- * @ind: ind.
- * @buffer: Buffer array to handle print.
- * @flags: Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: 1 or 2;
+ * h_printf - func to Prints an argument based on its type
+ * @fmt: arguments.
+ * @list: arguments to be printed.
+ * @end: end.
+ * @buffer: Buffer 
+ * @flags: C flags
+ * @width: width.
+ * @precision:  specification
+ * @size: specifier
+ * Return: 1 or 2..
  */
 int h_printf(const char *ft, int *end, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
