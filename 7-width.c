@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * h_width - Calculates the width for printing
- * @format: Formatted string in which to print the arguments.
- * @i: List of arguments to be printed.
- * @list: list of arguments.
+ * h_width - function to Calculates the width for printing
+ * @format: Formatted  arguments.
+ * @i: List of arguments 
+ * @list: list of arguments
  *
  * Return: width.
  */
@@ -16,7 +16,7 @@ int h_width(const char *format, int *i, va_list list)
     
 	for (c_i = *i + 1; format[c_i] != '\0'; curr_i++)
 	{
-		if (is_digit(format[c_i]))
+		if (isDigit(format[c_i]))
 		{
 			width *= 10;
 			width += format[c_i] - '0';
