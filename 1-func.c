@@ -3,14 +3,14 @@
 /************************* 1. *************************/
 
 /**
- * printf_ch - Prints a char
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * printf_ch - function to Prints a char
+ * @types: List 
+ * @buffer: Buffer 
+ * @flags:   flags
  * @width: Width
- * @precision: Precision specification
+ * @precision: specification
  * @size: Size specifier
- * Return: Number of chars printed
+ * Return: function
  */
 int printf_cha(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
@@ -22,14 +22,14 @@ int printf_cha(va_list types, char buffer[],
 
 /************************* 2. *************************/
 /**
- * printf_str - Prints a string
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * printf_str - functin to Prints a string
+ * @types: List 
+ * @buffer: Buffer 
+ * @flags:  
  * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * @precision: specification
+ * @size:  specifier
+ * Return: function
  */
 int printf_str(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
@@ -78,14 +78,14 @@ int printf_str(va_list types, char buffer[],
 
 /************************* 3. *************************/
 /**
- * printf_ex_str - Prints ascii codes in hexa of non printable chars
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * printf_ex_str - function to Prints hexa of non printable chars
+ * @types: Lista 
+ * @buffer: Buffer 
+ * @flags: active flags
+ * @width: get _width
+ * @precision: specification
+ * @size: specifier
+ * Return: functiob
  */
 int printf_ex_str(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
@@ -103,10 +103,10 @@ int printf_ex_str(va_list types, char buffer[],
 
 	while (string[a] != '\0')
 	{
-		if (is_printable(string[a]))
+		if (is_ex(string[a]))
 			buffer[a + off] = string[a];
 		else
-			off += append_hexa_code(string[a], buffer, a + off);
+			off += append_code(string[a], buffer, a + off);
 
 		a++;
 	}
@@ -118,14 +118,14 @@ int printf_ex_str(va_list types, char buffer[],
 
 /************************* 4. *************************/
 /**
- * printf_ine - Print int
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed
+ * printf_ine - function to Print int
+ * @types:  arguments
+ * @buffer: Buffer 
+ * @flags:  active flags
+ * @width: width.
+ * @precision:  specification
+ * @size: specifier
+ * Return: function
  */
 int printf_ine(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
@@ -162,14 +162,14 @@ int printf_ine(va_list types, char buffer[],
 
 /************************* 5. *************************/
 /**
- * printf_ro13 - Print a string in rot13.
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Numbers of chars printed
+ * printf_ro13 - function to Print a string in rot13.
+ * @types:  arguments
+ * @buffer: Buffer 
+ * @flags:   active flags
+ * @width: widht
+ * @precision:  specification
+ * @size: specifier
+ * Return: count
  */
 int printf_ro13(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
