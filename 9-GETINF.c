@@ -57,12 +57,12 @@ void fre_inf(inf_t *inf, int al)
 	{
 		if (!inf->cmd_buffer)
 			free(inf->argu);
-		if (inf->envu)
-			free_list(&(inf->envu));
+		if (inf->envo)
+			fre_li(&(inf->envo));
 		if (inf->his)
-			free_list(&(inf->his));
+			fre_li(&(inf->his));
 		if (inf->ali)
-			free_list(&(inf->ali));
+			fre_li(&(inf->ali));
 		ffre(inf->envoro);
 			inf->envoro = NULL;
 		bfre((void **)inf->cmd_buffer);
@@ -71,4 +71,3 @@ void fre_inf(inf_t *inf, int al)
 		_putchar(BUF_FLUSH);
 	}
 }
-
