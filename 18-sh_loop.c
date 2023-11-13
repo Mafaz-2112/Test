@@ -7,7 +7,7 @@
  *
  * Return: 0, 1 on error, or error code
  */
-int hsh(inf_t *inf, char **avl)
+int hsh(info_t *inf, char **avl)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
@@ -49,7 +49,7 @@ int hsh(inf_t *inf, char **avl)
  *
  * Return: -1 if builtin not found,
  */
-int find_bult(inf_t *inf)
+int find_bult(info_t *inf)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
@@ -80,7 +80,7 @@ int find_bult(inf_t *inf)
  *
  * Return: void
  */
-void find_cmnd(inf_t *inf)
+void find_cmnd(info_t *inf)
 {
 	char *pth = NULL;
 	int i, k;
@@ -122,7 +122,7 @@ void find_cmnd(inf_t *inf)
  *
  * Return: void
  */
-void fork_cmnd(inf_t *inf)
+void fork_cmnd(info_t *inf)
 {
 	pid_t child_pid;
 
