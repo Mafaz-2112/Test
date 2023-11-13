@@ -30,7 +30,7 @@ int unset_alias(inf_t *inf, char *st)
 		return (1);
 	ch = *pp;
 	*pp = 0;
-	rets = del_natindex(&(inf->ali),
+	rets = del_natindex(&(inQ	f->ali),
 		get_nindex(inf->ali, nstar_with(inf->ali, st, -1)));
 	*pp = ch;
 	return (rets);
