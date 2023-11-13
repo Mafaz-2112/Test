@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: 0
  */
-char **get_envo(inf_t *inf)
+char **get_envo(info_t *inf)
 {
 	if (!inf->envoro || inf->envo_cha)
 	{
@@ -24,7 +24,7 @@ char **get_envo(inf_t *inf)
  *  Return: 1 on delete, 0 otherwise
  * @varl: the string env var property
  */
-int un_setenvo(inf_t *inf, char *varl)
+int un_setenvo(info_t *inf, char *varl)
 {
 	list_t *n = inf->env;
 	size_t in = 0;
@@ -58,7 +58,7 @@ int un_setenvo(inf_t *inf, char *varl)
  * @val: the string env var value
  *  Return: 0
  */
-int set_envo(inf_t *inf, char *varl, char *val)
+int set_envo(info_t *inf, char *varl, char *val)
 {
 	char *buff = NULL;
 	list_t *n;
