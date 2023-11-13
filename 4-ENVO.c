@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: 0
  */
-int my_envo(inf_t *inf)
+int my_envo(info_t *inf)
 {
 	pr_li_string(inf->env);
 	return (0);
@@ -19,7 +19,7 @@ int my_envo(inf_t *inf)
  *
  * Return: null
  */
-char *getenvo(inf_t *inf, const char *nm)
+char *getenvo(info_t *inf, const char *nm)
 {
 	list_t *n = inf->env;
 	char *pp;
@@ -41,7 +41,7 @@ char *getenvo(inf_t *inf, const char *nm)
  *        constant function prototype.
  *  Return: 0
  */
-int my_setenvo(inf_t *inf)
+int my_setenvo(info_t *inf)
 {
 	if (inf->argcu != 3)
 	{
@@ -59,7 +59,7 @@ int my_setenvo(inf_t *inf)
  *        constant function prototype.
  * Return: 0
  */
-int my_un_setenvo(inf_t *inf)
+int my_un_setenvo(info_t *inf)
 {
 	int in;
 
@@ -80,7 +80,7 @@ int my_un_setenvo(inf_t *inf)
  *          constant function prototype.
  * Return: 0
  */
-int pop_envo_lis(inf_t *inf)
+int pop_envo_lis(info_t *inf)
 {
 	list_t *n = NULL;
 	size_t in;
