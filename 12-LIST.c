@@ -127,9 +127,9 @@ int del_natindex(list_t **headr, unsigned int inx)
 			free(n);
 			return (1);
 		}
-		i++;
+		in++;
 		prev_n = n;
-		n = nde->nxt;
+		n = n->nxt;
 	}
 	return (0);
 }
