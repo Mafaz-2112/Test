@@ -4,7 +4,7 @@
  * cle_inf - initializes info_t struct
  * @inf: struct address
  */
-void cle_inf(inf_t *inf)
+void cle_inf(info_t *inf)
 {
 	inf->argu = NULL;
 	inf->argvu = NULL;
@@ -17,7 +17,7 @@ void cle_inf(inf_t *inf)
  * @inf: struct address
  * @avc: argument vector
  */
-void set_inf(inf_t *inf, char **avc)
+void set_inf(info_t *inf, char **avc)
 {
 	int in = 0;
 
@@ -48,7 +48,7 @@ void set_inf(inf_t *inf, char **avc)
  * @inf: struct address
  * @al: true if freeing all fields
  */
-void fre_inf(inf_t *inf, int al)
+void fre_inf(info_t *inf, int al)
 {
 	ffre(inf->argvu);
 	inf->argvu = NULL;
