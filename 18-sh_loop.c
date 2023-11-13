@@ -1,154 +1,157 @@
 #include "eshell.h"
 
 /**
- * is_cha - test if current char in buffer is a chain delimeter
- * @inf: the parameter struct
- * @buff: the char buffer
- * @pp: address of current position in buf
+ * hsh - main shell loop
+ * @inf: the parameter & return info struct
+ * @avl: the argument vector from main()
  *
- * Return: 1, 0 otherwise
+ * Return: 0, 1 on error, or error code
  */
-int is_cha(inf_t *inf, char *buff, size_t *pp)
+int hsh(inf_t *inf, char **avl)
 {
-	size_t jj = *pp;
+	ssize_t r = 0;
+	int builtin_ret = 0;
 
-	if (buf[jj] == '|' && buf[jj + 1] == '|')
+	while (r != -1 && builtin_ret != -2)
 	{
-		buf[jj] = 0;
-		jj++;
-		inf->cmd_buf_type = CMD_OR;
+		cle_inf(inf);
+		if (intive(inf))
+			_puts("$ ");
+		e_putchar(BUF_FLUSH);
+		r = get_inp(inf);
+		if (r != -1)
+		{
+			set_inf(inf, avl);
+			builtin_ret = find_bult(inf);
+			if (builtin_ret == -1)
+				find_cmnd(inf);
+		}
+		else if (interactive(inf))
+			_putchar('\n');
+		fre_inf(inf, 0);
 	}
-	else if (buff[jj] == '&' && buff[jj + 1] == '&')
+	w_his(inf);
+	fre_inf(inf, 1);
+	if (!interactive(inf) && inf->stts)
+		exit(inf->stts);
+	if (builtin_ret == -2)
 	{
-		buff[jj] = 0;
-		jj++;
-		inf->cmd_buf_type = CMD_AND;
+		if (inf->er_nu == -1)
+			exit(inf->stts);
+		exit(inf->er_nu);
 	}
-	else if (buff[jj] == ';')
+	return (builtin_ret);
+}
+
+/**
+ * find_bult - finds a builtin command
+ * @inf: the parameter & return info struct
+ *
+ * Return: -1 if builtin not found,
+ */
+int find_bult(inf_t *inf)
+{
+	int i, built_in_ret = -1;
+	builtin_table builtintbl[] = {
+		{"exit", my_exit},
+		{"env", my_envo},
+		{"help", my_help},
+		{"history", my_his},
+		{"setenv", my_setenvo},
+		{"unsetenv", my_un_setenvo},
+		{"cd", my_cd},
+		{"alias", my_ali},
+		{NULL, NULL}
+	};
+
+	for (i = 0; builtintbl[i].type; i++)
+		if (_strcmp(inf->argvu[0], builtintbl[i].type) == 0)
+		{
+			inf->li_coun++;
+			built_in_ret = builtintbl[i].func(inf);
+			break;
+		}
+	return (built_in_ret);
+}
+
+/**
+ * find_cmnd - finds a command in PATH
+ * @inf: the parameter & return info struct
+ *
+ * Return: void
+ */
+void find_cmnd(inf_t *inf)
+{
+	char *pth = NULL;
+	int i, k;
+
+	inf->pth = inf->argvu[0];
+	if (inf->licoun_flag == 1)
 	{
-		buff[jj] = 0;
-		inf->cmd_buf_type = CMD_CHAIN;
+		inf->li_coun++;
+		inf->licoun_flag = 0;
+	}
+	for (i = 0, k = 0; inf->argu[i]; i++)
+		if (!isde(inf->argu[i], " \t\n"))
+			k++;
+	if (!k)
+		return;
+
+	pth = find_pth(inf, getenvo(inf, "PATH="), inf->argvu[0]);
+	if (pth)
+	{
+		inf->pth = pth;
+		fork_cmnd(inf);
 	}
 	else
-		return (0);
-	*pp = jj;
-	return (1);
+	{
+		if ((interactive(inf) || getenvo(inf, "PATH=")
+					|| inf->argvu[0][0] == '/') && is_cmnd(inf, inf->argvu[0]))
+			fork_cmnd(inf);
+		else if (*(inf->argu) != '\n')
+		{
+			inf->stts = 127;
+			p_error(inf, "not found\n");
+		}
+	}
 }
 
 /**
- * ch_cha - checks we should continue chaining based on last status
- * @inf: the parameter struct
- * @buff: the char buffer
- * @pp: address of current position in buf
- * @in: starting position in buf
- * @leen: length of buf
+ * fork_cmnd - forks a an exec thread to run cmd
+ * @inf: the parameter & return info struct
  *
- * Return: Void
+ * Return: void
  */
-void ch_cha(inf_t *inf, char *buff, size_t *pp, size_t in, size_t leen)
+void fork_cmnd(inf_t *inf)
 {
-	size_t jj = *pp;
+	pid_t child_pid;
 
-	if (inf->cmd_buf_type == CMD_AND)
+	child_pid = fork();
+	if (child_pid == -1)
 	{
-		if (inf->stts)
-		{
-			buff[in] = 0;
-			jj = leen;
-		}
+
+		perror("Error:");
+		return;
 	}
-	if (inf->cmd_buf_type == CMD_OR)
+	if (child_pid == 0)
 	{
-		if (!inf->stts)
+		if (execve(inf->pth, inf->argvu, get_envo(inf)) == -1)
 		{
-			buff[in] = 0;
-			jj = leen;
+			fre_inf(inf, 1);
+			if (errno == EACCES)
+				exit(126);
+			exit(1);
 		}
-	}
-
-	*pp = jj;
-}
-
-/**
- * rep_ali - replaces an aliases in the tokenized string
- * @inf: the parameter struct
- *
- * Return: 1, 0 otherwise
- */
-int rep_ali(inf_t *inf)
-{
-	int in;
-	list_t *n;
-	char *pp;
-
-	for (in = 0; in < 10; in++)
-	{
-		n = nstar_with(inf->ali, inf->argvu[0], '=');
-		if (!n)
-			return (0);
-		free(inf->argvu[0]);
-		pp = _strchr(n->st, '=');
-		if (!pp)
-			return (0);
-		pp = _strdup(pp + 1);
-		if (!pp)
-			return (0);
-		inf->argvu[0] = pp;
-	}
-	return (1);
-}
-
-/**
- * rep_var - replaces vars in the tokenized string
- * @inf: the parameter struct
- *
- * Return: 1, 0 otherwise
- */
-int rep_var(inf_t *inf)
-{
-	int i = 0;
-	list_t *n;
-
-	for (i = 0; inf->argvu[i]; i++)
-	{
-		if (inf->argvu[i][0] != '$' || !inf->argvu[i][1])
-			continue;
-
-		if (!_strcmp(inf->argvu[i], "$?"))
-		{
-			rep_str(&(inf->argvu[i]),
-					_strdup(conv_num(inf->stts, 10, 0)));
-			continue;
-		}
-		if (!_strcmp(inf->argvu[i], "$$"))
-		{
-			rep_str & (inf->argvu[i]),
-					_strdup(conv_num(getpid(), 10, 0));
-			continue;
-		}
-		n = nstar_with(inf->envo, &inf->argvu[i][1], '=');
-		if (n)
-		{
-			rep_str(&(inf->argvu[i]),
-					_strdup(_strchr(n->st, '=') + 1));
-			continue;
-		}
-		rep_str(&inf->argvu[i], _strdup(""));
 
 	}
-	return (0);
-}
-
-/**
- * rep_str - replaces string
- * @old: address of old string
- * @new: new string
- *
- * Return: 1 if replaced, 0 otherwise
- */
-int rep_str(char **old, char *new)
-{
-	free(*old);
-	*old = new;
-	return (1);
+	else
+	{
+		wait(&(inf->stts));
+		if (WIFEXITED(inf->stts))
+		{
+			inf->stts = WEXITSTATUS(inf->stts);
+			if (inf->stts == 126)
+				p_error(inf, "Permission denied\n");
+		}
+	}
 }
