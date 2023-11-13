@@ -68,12 +68,12 @@ int my_cd(inf_t *inf)
 	if (cdir_re == -1)
 	{
 		p_error(inf, "can't cd to ");
-		e_put(inf->argvu[1]), e_putchar('\n');
+		e_puts(inf->argvu[1]), e_putchar('\n');
 	}
 	else
 	{
-		set_envo(inf, "OLDPWD", getenvo(inf, "PWD="));
-		set_envo(inf, "PWD", getcwd(buffer, 1024));
+		set_env(inf, "OLDPWD", getenvo(inf, "PWD="));
+		set_env(inf, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
