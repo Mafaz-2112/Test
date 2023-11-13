@@ -35,13 +35,13 @@ int errato(char *st)
  */
 void p_error(inf_t *inf, char *est)
 {
-	e_put(inf->file_name);
-	e_put(": ");
+	e_puts(inf->file_name);
+	e_puts(": ");
 	pr_d(inf->li_coun, STDERR_FILENO);
-	e_put(": ");
-	e_put(inf->argvu[0]);
-	e_put(": ");
-	e_put(est);
+	e_puts(": ");
+	e_puts(inf->argvu[0]);
+	e_puts(": ");
+	e_puts(est);
 }
 
 /**
@@ -134,6 +134,5 @@ void rm_comme(char *buff)
 		{
 			buff[in] = '\0';
 			break;
-		}
+		} 
 }
-
