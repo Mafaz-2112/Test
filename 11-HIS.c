@@ -45,10 +45,10 @@ int w_his(inf_t *inf)
 		return (-1);
 	for (n = inf->his; n; n = n->nxt)
 	{
-		put_fd(node->str, f_d);
-		e_putd('\n', f_d);
+		put_fd(n->st, f_d);
+		e_putfd('\n', f_d);
 	}
-	e_putd(BUF_FLUSH, f_d);
+	e_putfd(BUF_FLUSH, f_d);
 	close(f_d);
 	return (1);
 }
@@ -141,4 +141,3 @@ int renum_his(inf_t *inf)
 	}
 	return (inf->hiscoun = in);
 }
-
