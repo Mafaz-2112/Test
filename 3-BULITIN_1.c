@@ -9,7 +9,7 @@
  */
 int my_his(inf_t *inf)
 {
-	p_li(inf->his);
+	p_li(inf->history);
 	return (0);
 }
 
@@ -30,8 +30,8 @@ int unset_alias(inf_t *inf, char *st)
 		return (1);
 	ch = *pp;
 	*pp = 0;
-	rets = del_natindex(&(inQ	f->ali),
-		get_nindex(inf->ali, nstar_with(inf->ali, st, -1)));
+	rets = del_natindex(&(inf->alias),
+		get_nindex(inf->alias, nstar_with(inf->alias, st, -1)));
 	*pp = ch;
 	return (rets);
 }
