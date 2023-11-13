@@ -8,7 +8,7 @@
  */
 int my_envo(inf_t *inf)
 {
-	pr_li_string(inf->envo);
+	pr_li_string(inf->env);
 	return (0);
 }
 
@@ -21,7 +21,7 @@ int my_envo(inf_t *inf)
  */
 char *getenvo(inf_t *inf, const char *nm)
 {
-	list_t *n = inf->envo;
+	list_t *n = inf->env;
 	char *pp;
 
 	while (n)
@@ -65,7 +65,7 @@ int my_un_setenvo(inf_t *inf)
 
 	if (inf->argcu == 1)
 	{
-		e_put("Too few arguements.\n");
+		e_puts("Too few arguements.\n");
 		return (1);
 	}
 	for (in = 1; in <= inf->argcu; in++)
@@ -87,6 +87,6 @@ int pop_envo_lis(inf_t *inf)
 
 	for (in = 0; envoro[in]; in++)
 		ad_nend(&n, envoro[in], 0);
-	inf->envo = n;
+	inf->env = n;
 	return (0);
 }
