@@ -43,7 +43,7 @@ int w_his(inf_t *inf)
 	free(file_nm);
 	if (f_d == -1)
 		return (-1);
-	for (n = inf->his; n; n = n->nxt)
+	for (n = inf->history; n; n = n->nxt)
 	{
 		put_fd(n->st, f_d);
 		e_putfd('\n', f_d);
@@ -95,11 +95,11 @@ int re_his(inf_t *inf)
 	if (lat != in)
 		bld_hisli(inf, buff + lat, li_coun++);
 	free(buff);
-	inf->hiscoun = li_coun;
-	while (inf->hiscoun-- >= HIST_MAX)
-		del_natindex(&(inf->his), 0);
+	inf->his = li_coun;
+	while (inf->his-- >= HIST_MAX)
+		del_natindex(&(inf->history), 0);
 	renum_his(inf);
-	return (inf->hiscoun);
+	return (inf->his);
 }
 
 /**
@@ -114,12 +114,12 @@ int bld_hisli(inf_t *inf, char *buff, int li_coun)
 {
 	list_t *n = NULL;
 
-	if (inf->his)
-		n = inf->his;
+	if (inf->history)
+		n = inf->history;
 	ad_nend(&n, buff, li_coun);
 
-	if (!inf->his)
-		inf->his = n;
+	if (!inf->history)
+		inf->history = n;
 	return (0);
 }
 
@@ -131,7 +131,7 @@ int bld_hisli(inf_t *inf, char *buff, int li_coun)
  */
 int renum_his(inf_t *inf)
 {
-	list_t *n = inf->his;
+	list_t *n = inf->history;
 	int in = 0;
 
 	while (n)
@@ -139,5 +139,5 @@ int renum_his(inf_t *inf)
 		n->numb = in++;
 		n = n->nxt;
 	}
-	return (inf->hiscoun = in);
+	return (inf->his = in);
 }
