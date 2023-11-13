@@ -6,7 +6,7 @@
  *
  * Return: function
  */
-int intive(inf_t *inf)
+int intive(info_t *inf)
 {
 	return (isatty(STDIN_FILENO) && inf->refd <= 2);
 }
