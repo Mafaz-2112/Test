@@ -34,7 +34,7 @@ int my_exit(inf_t *inf)
  * constant function prototype.
  * Return:  0
  */
-int my_cd(info_t *inf)
+int my_cd(inf_t *inf)
 {
 	char *st, *dirct, buffer[1024];
 	int cdir_re;
