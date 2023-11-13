@@ -8,7 +8,7 @@
  *
  * Return: bytes read
  */
-ssize_t input_buf(inf_t *inf, char **buff, size_t *leen)
+ssize_t input_buf(info_t *inf, char **buff, size_t *leen)
 {
 	ssize_t rr = 0;
 	size_t leen_pp = 0;
@@ -48,7 +48,7 @@ ssize_t input_buf(inf_t *inf, char **buff, size_t *leen)
  *
  * Return: bytes read
  */
-ssize_t get_inp(inf_t *inf)
+ssize_t get_inp(info_t *inf)
 {
 	static char *buff;
 	static size_t in, jj, leen;
@@ -95,7 +95,7 @@ ssize_t get_inp(inf_t *inf)
  *
  * Return: rr
  */
-ssize_t read_buf(inf_t *inf, char *buff, size_t *in)
+ssize_t read_buf(info_t *inf, char *buff, size_t *in)
 {
 	ssize_t rr = 0;
 
@@ -115,7 +115,7 @@ ssize_t read_buf(inf_t *inf, char *buff, size_t *in)
  *
  * Return: ss
  */
-int get_line(inf_t *inf, char **ptrr, size_t *len)
+int get_line(info_t *inf, char **ptrr, size_t *len)
 {
 	static char buff[READ_BUF_SIZE];
 	static size_t in, leen;
