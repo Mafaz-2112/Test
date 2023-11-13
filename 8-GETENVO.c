@@ -8,7 +8,7 @@
  */
 char **get_envo(inf_t *inf)
 {
-	if (!inf->envoro || inf->env_cha)
+	if (!inf->envoro || inf->envo_cha)
 	{
 		inf->envoro = li_str(inf->env);
 		inf->envo_cha = 0;
