@@ -7,7 +7,7 @@
  * Return: buff
  */
 
-char *get_hisf(inf_t *inf)
+char *get_hisf(info_t *inf)
 {
 	char *buff, *dirct;
 
@@ -30,7 +30,7 @@ char *get_hisf(inf_t *inf)
  *
  * Return: 1, else -1
  */
-int w_his(inf_t *inf)
+int w_his(info_t *inf)
 {
 	ssize_t f_d;
 	char *file_nm = get_hisf(inf);
@@ -59,7 +59,7 @@ int w_his(inf_t *inf)
  *
  * Return: 0 otherwise
  */
-int re_his(inf_t *inf)
+int re_his(info_t *inf)
 {
 	int in, lat = 0, li_coun = 0;
 	ssize_t f_d, rd_len, f_size = 0;
@@ -110,7 +110,7 @@ int re_his(inf_t *inf)
  *
  * Return: 0
  */
-int bld_hisli(inf_t *inf, char *buff, int li_coun)
+int bld_hisli(info_t *inf, char *buff, int li_coun)
 {
 	list_t *n = NULL;
 
@@ -129,7 +129,7 @@ int bld_hisli(inf_t *inf, char *buff, int li_coun)
  *
  * Return: func
  */
-int renum_his(inf_t *inf)
+int renum_his(info_t *inf)
 {
 	list_t *n = inf->history;
 	int in = 0;
