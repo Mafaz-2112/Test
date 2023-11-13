@@ -8,9 +8,9 @@
  */
 char **get_envo(inf_t *inf)
 {
-	if (!inf->envoro || inf->envo_cha)
+	if (!inf->envoro || inf->env_cha)
 	{
-		inf->envoro = li_str(inf->envo);
+		inf->envoro = li_str(inf->env);
 		inf->envo_cha = 0;
 	}
 
@@ -26,7 +26,7 @@ char **get_envo(inf_t *inf)
  */
 int un_setenvo(inf_t *inf, char *varl)
 {
-	list_t *n = inf->envo;
+	list_t *n = inf->env;
 	size_t in = 0;
 	char *pp;
 
@@ -38,9 +38,9 @@ int un_setenvo(inf_t *inf, char *varl)
 		pp = starts_with(n->st, varl);
 		if (pp && *pp == '=')
 		{
-			inf->envo_cha = del_natindex(&(inf->envo), in);
+			inf->envo_cha = del_natindex(&(inf->env), in);
 			in = 0;
-			n = inf->envo;
+			n = inf->env;
 			continue;
 		}
 		n = n->nxt;
@@ -73,7 +73,7 @@ int set_envo(inf_t *inf, char *varl, char *val)
 	_strcpy(buff, varl);
 	_strcat(buff, "=");
 	_strcat(buff, val);
-	n = inf->envo;
+	n = inf->env;
 	while (n)
 	{
 		pp = starts_with(n->st, varl);
@@ -86,7 +86,7 @@ int set_envo(inf_t *inf, char *varl, char *val)
 		}
 		n = n->nxt;
 	}
-	ad_nend(&(inf->envo), buff, 0);
+	ad_nend(&(inf->env), buff, 0);
 	free(buff);
 	inf->envo_cha = 1;
 	return (0);
