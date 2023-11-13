@@ -15,7 +15,7 @@ int hsh(inf_t *inf, char **avl)
 	while (r != -1 && builtin_ret != -2)
 	{
 		cle_inf(inf);
-		if (interactive(inf))
+		if (intive(inf))
 			_puts("$ ");
 		e_putchar(BUF_FLUSH);
 		r = get_inp(inf);
@@ -36,9 +36,9 @@ int hsh(inf_t *inf, char **avl)
 		exit(inf->stts);
 	if (builtin_ret == -2)
 	{
-		if (inf->err_num == -1)
+		if (inf->er_nu == -1)
 			exit(inf->stts);
-		exit(inf->err_num);
+		exit(inf->er_nu);
 	}
 	return (builtin_ret);
 }
@@ -53,14 +53,14 @@ int find_bult(inf_t *inf)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"exit", my_exit},
+		{"env", my_envo},
+		{"help", my_help},
+		{"history", my_his},
+		{"setenv", my_setenvo},
+		{"unsetenv", my_un_setenvo},
+		{"cd", my_cd},
+		{"alias", my_ali},
 		{NULL, NULL}
 	};
 
@@ -88,11 +88,11 @@ void find_cmnd(inf_t *inf)
 	inf->pth = inf->argvu[0];
 	if (inf->licoun_flag == 1)
 	{
-		inf->li_conu++;
+		inf->li_coun++;
 		inf->licoun_flag = 0;
 	}
 	for (i = 0, k = 0; inf->argu[i]; i++)
-		if (!is_de(inf->argu[i], " \t\n"))
+		if (!isde(inf->argu[i], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -155,4 +155,3 @@ void fork_cmnd(inf_t *inf)
 		}
 	}
 }
-
