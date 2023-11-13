@@ -51,7 +51,7 @@ ssize_t input_buf(inf_t *inf, char **buff, size_t *leen)
 ssize_t get_inp(inf_t *inf)
 {
 	static char *buff;
-	static size_t ii, jj, leen;
+	static size_t in, jj, leen;
 	ssize_t rr = 0;
 	char **buff_pp = &(inf->argu), *pp;
 
@@ -64,7 +64,7 @@ ssize_t get_inp(inf_t *inf)
 		jj = in;
 		pp = buff + in;
 
-		ch_cha(inf, buff, &jj, ii, leen);
+		ch_cha(inf, buff, &jj, in, leen);
 		while (jj < leen)
 		{
 			if (is_chn(inf, buff, &jj))
@@ -72,11 +72,11 @@ ssize_t get_inp(inf_t *inf)
 			jj++;
 		}
 
-		ii = jj + 1;
-		if (ii >= leen)
+		in = jj + 1;
+		if (in >= leen)
 		{
-			ii = leen = 0;
-			inf->cmd_buff_t = CMD_NORM;
+			in = leen = 0;
+			inf->cmd_buffer_t = CMD_NORM;
 		}
 
 		*buff_pp = pp;
@@ -166,4 +166,3 @@ void sigint_Handler(__attribute__((unused))int sig_numb)
 	_puts("$ ");
 	_putchar(BUF_FLUSH);
 }
-
