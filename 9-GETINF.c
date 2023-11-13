@@ -57,12 +57,12 @@ void fre_inf(inf_t *inf, int al)
 	{
 		if (!inf->cmd_buffer)
 			free(inf->argu);
-		if (inf->envo)
-			fre_li(&(inf->envo));
-		if (inf->his)
-			fre_li(&(inf->his));
-		if (inf->ali)
-			fre_li(&(inf->ali));
+		if (inf->env)
+			fre_li(&(inf->env));
+		if (inf->history)
+			fre_li(&(inf->history));
+		if (inf->alias)
+			fre_li(&(inf->alias));
 		ffre(inf->envoro);
 			inf->envoro = NULL;
 		bfre((void **)inf->cmd_buffer);
