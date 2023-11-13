@@ -34,9 +34,9 @@ extern char **envoro;
  * @argu: a string generated from getline containing arguements
  * @argvu:an array of strings generated from arg
  * @pth: a string path for the current command
- * @argcu: the argument count
+ * @argc: the argument count
  * @li_coun: the error count
- * @er_nu: the error code for exit()s
+ * @er_num: the error code for exit()s
  * @licoun_flag: if on count this line of input
  * @file_name: the program filename
  * @envo: linked list local copy of environ
@@ -58,11 +58,11 @@ typedef struct passinfo
 	int argcu;
 	unsigned int li_coun;
 	int er_nu;
-	int licoun_flag;
+	int licount_flag;
 	char *file_name;
-	list_t *envo;
-	list_t *his;
-	list_t *ali;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
 	char **envoro;
 	int envo_cha;
 	int stts;
@@ -70,7 +70,7 @@ typedef struct passinfo
 	char **cmd_buffer;
 	int cmd_buffer_t;
 	int refd;
-	int hiscoun;
+	int his;
 } inf_t;
 
 #define INFO_INIT \
@@ -162,10 +162,10 @@ char *dup_ch(char *, int, int);
 char *find_pth(inf_t *, char *, char *);
 char **sttow(char *, char *);
 char **sttow1(char *, char);
-int hsh(info_t *, char **);
-int find_bult(info_t *);
-void find_cmnd(info_t *);
-void fork_cmnd(info_t *);
+int hsh(inf_t *, char **);
+int find_bult(inf_t *);
+void find_cmnd(inf_t *);
+void fork_cmnd(inf_t *);
 int loop_hsh(char **);
 
 /**************************/
@@ -182,4 +182,3 @@ char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
 #endif
-
