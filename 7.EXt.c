@@ -48,7 +48,7 @@ char *_strncat(char *destin, char *sor, int na)
 		in++;
 	while (sor[jj] != '\0' && jj < na)
 	{
-		destin[in] = src[jj];
+		destin[in] = sor[jj];
 		in++;
 		jj++;
 	}
@@ -72,4 +72,3 @@ char *_strchr(char *st, char ch)
 
 	return (NULL);
 }
-
