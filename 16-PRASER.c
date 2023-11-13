@@ -7,7 +7,7 @@
  *
  * Return: 1, 0 otherwise
  */
-int is_cmnd(inf_t *inf, char *pth)
+int is_cmnd(info_t *inf, char *pth)
 {
 	struct stat stt;
 
@@ -50,7 +50,7 @@ char *dup_ch(char *pthstr, int star, int sop)
  *
  * Return: nothing
  */
-char *find_pth(inf_t *inf, char *pthstr, char *cmnd)
+char *find_pth(info_t *inf, char *pthstr, char *cmnd)
 {
 	int in = 0, curr_pos = 0;
 	char *pth;
