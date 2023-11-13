@@ -8,7 +8,7 @@
  */
 int my_envo(inf_t *inf)
 {
-	p_li_string(inf->envo);
+	pr_li_string(inf->envo);
 	return (0);
 }
 
@@ -45,10 +45,10 @@ int my_setenvo(inf_t *inf)
 {
 	if (inf->argcu != 3)
 	{
-		e_put("Incorrect number of arguements\n");
+		e_puts("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (set_envo(inf, inf->argvu[1], inf->argvu[2]))
+	if (set_env(inf, inf->argvu[1], inf->argvu[2]))
 		return (0);
 	return (1);
 }
@@ -69,7 +69,7 @@ int my_un_setenvo(inf_t *inf)
 		return (1);
 	}
 	for (in = 1; in <= inf->argcu; in++)
-		un_setenv(inf, inf->argvu[in]);
+		un_setenvo(inf, inf->argvu[in]);
 
 	return (0);
 }
@@ -90,4 +90,3 @@ int pop_envo_lis(inf_t *inf)
 	inf->envo = n;
 	return (0);
 }
-
