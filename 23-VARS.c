@@ -123,7 +123,7 @@ int rep_var(inf_t *inf)
 		if (!_strcmp(inf->argvu[i], "$$"))
 		{
 			rep_str & (inf->argvu[i]),
-					_strdup(conv_num(getpid(), 10, 0)));
+					_strdup(conv_num(getpid(), 10, 0));
 			continue;
 		}
 		n = nstar_with(inf->envo, &inf->argvu[i][1], '=');
@@ -152,4 +152,3 @@ int rep_str(char **old, char *new)
 	*old = new;
 	return (1);
 }
-
