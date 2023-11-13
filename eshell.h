@@ -11,7 +11,6 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
-#include "list_eshell.h"
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
@@ -27,6 +26,18 @@
 #define HIST_MAX	4096
 extern char **envoro;
 
+/**
+ * struct liststr - singly linked list
+ * @numb: the number field
+ * @st: a string
+ * @nxt: points to the next node
+ */
+typedef struct liststr
+{
+	int numb;
+	char *st;
+	struct liststr *nxt;
+} list_t;
 
 
 /**
@@ -89,18 +100,6 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-/**
- * struct liststr - singly linked list
- * @numb: the number field
- * @st: a string
- * @nxt: points to the next node
- */
-typedef struct liststr
-{
-	int numb;
-	char *st;
-	struct liststr *nxt;
-} list_t;
 
 void e_puts(char *);
 int e_putchar(char);
