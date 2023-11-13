@@ -1,92 +1,115 @@
 #include "eshell.h"
 
 /**
- * my_envo - prints the current environment
+ * my_his - displays the history list, one command by line, preceded
+ *              with line numbers, starting at 0.
  * @inf: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: 0
+ *        constant function prototype.
+ *  Return:  0
  */
-int my_envo(inf_t *inf)
+int my_his(inf_t *inf)
 {
-	pr_li_string(inf->envo);
+	p_li(inf->his);
 	return (0);
 }
 
 /**
- * getenvo - gets the value of an environ variable
- * @inf: Structure containing potential arguments. Used to maintain
- * @nm: env var name
+ * unset_alias - sets alias to string
+ * @inf: parameter struct
+ * @st: the string alias
  *
- * Return: null
+ * Return: Always 0 on success, 1 on error
  */
-char *getenvo(inf_t *inf, const char *nm)
+int unset_alias(inf_t *inf, char *st)
 {
-	list_t *n = inf->envo;
-	char *pp;
+	char *pp, ch;
+	int rets;
 
-	while (n)
-	{
-		pp = starts_with(n->st, nm);
-		if (pp && *pp)
-			return (pp);
-		n = n->nxt;
-	}
-	return (NULL);
+	pp = _strchr(st, '=');
+	if (!pp)
+		return (1);
+	ch = *pp;
+	*pp = 0;
+	rets = del_natindex(&(inQ	f->ali),
+		get_nindex(inf->ali, nstar_with(inf->ali, st, -1)));
+	*pp = ch;
+	return (rets);
 }
 
 /**
- * my_setenvo - Initialize a new environment variable,
- *             or modify an existing one
- * @inf: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: 0
+ * set_alias - sets alias to string
+ * @inf: parameter struct
+ * @st: the string alias
+ *
+ * Return:  0 , 1 on error
  */
-int my_setenvo(inf_t *inf)
+int set_alias(inf_t *inf, char *st)
 {
-	if (inf->argcu != 3)
-	{
-		e_puts("Incorrect number of arguements\n");
+	char *pp;
+
+	pp = _strchr(st, '=');
+	if (!pp)
 		return (1);
-	}
-	if (set_env(inf, inf->argvu[1], inf->argvu[2]))
+	if (!*++pp)
+		return (unset_alias(inf, st));
+
+	unset_alias(inf, st);
+	return (ad_nend(&(inf->ali), st, 0) == NULL);
+}
+
+/**
+ * print_alias - prints an alias string
+ * @n: the alias node
+ *
+ * Return: 0, 1 on error
+ */
+int print_alias(list_t *n)
+{
+	char *pp = NULL, *ai = NULL;
+
+	if (n)
+	{
+		pp = _strchr(n->st, '=');
+		for (ai = n->st; ai <= pp; ai++)
+		_putchar(*ai);
+		_putchar('\'');
+		_puts(pp + 1);
+		_puts("'\n");
 		return (0);
+	}
 	return (1);
 }
 
 /**
- * my_un_setenvo - Remove an environment variable
+ * _myalias - mimics the alias builtin (man alias)
  * @inf: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- * Return: 0
+ *          constant function prototype.
+ *  Return:  0
  */
-int my_un_setenvo(inf_t *inf)
+int _myalias(inf_t *inf)
 {
-	int in;
+	int in = 0;
+	char *pp = NULL;
+	list_t *n = NULL;
 
 	if (inf->argcu == 1)
 	{
-		e_put("Too few arguements.\n");
-		return (1);
+		n = inf->ali;
+		while (n)
+		{
+			print_alias(n);
+			n = n->nxt;
+		}
+		return (0);
 	}
-	for (in = 1; in <= inf->argcu; in++)
-		un_setenvo(inf, inf->argvu[in]);
+	for (in = 1; inf->argvu[in]; in++)
+	{
+		pp = _strchr(inf->argvu[in], '=');
+		if (pp)
+			set_alias(inf, inf->argvu[in]);
+		else
+			print_alias(nstar_with(inf->ali, inf->argvu[in], '='));
+	}
 
-	return (0);
-}
-
-/**
- * pop_envo_lis - populates env linked list
- * @inf: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: 0
- */
-int pop_envo_lis(inf_t *inf)
-{
-	list_t *n = NULL;
-	size_t in;
-
-	for (in = 0; envoro[in]; in++)
-		ad_nend(&n, envoro[in], 0);
-	inf->envo = n;
 	return (0);
 }
