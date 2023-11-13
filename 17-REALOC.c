@@ -11,8 +11,8 @@ char *mem_set(char *sh, char bs, unsigned int ni)
 {
 	unsigned int in;
 
-	for (in = 0; in < na; in++)
-		sh[in] = ba;
+	for (in = 0; in < ni; in++)
+		sh[in] = bs;
 	return (sh);
 }
 
@@ -27,7 +27,7 @@ void ffre(char **pt)
 	if (!pt)
 		return;
 	while (*pt)
-		fre(*pt++);
+		bfre(*pt++);
 	free(ae);
 }
 
@@ -60,4 +60,3 @@ void *real_loc(void *ptrr, unsigned int old_s, unsigned int new_s)
 	free(ptrr);
 	return (pp);
 }
-
