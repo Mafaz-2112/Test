@@ -9,7 +9,7 @@
  */
 int main(int ach, char **avu)
 {
-	inf_t inf[] = { INFO_INIT };
+	info_t inf[] = { INFO_INIT };
 	int f_d = 2;
 
 	asm ("mov %1, %0\n\t"
