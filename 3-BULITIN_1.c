@@ -54,7 +54,7 @@ int set_alias(inf_t *inf, char *st)
 		return (unset_alias(inf, st));
 
 	unset_alias(inf, st);
-	return (ad_nend(&(inf->ali), st, 0) == NULL);
+	return (ad_nend(&(inf->alias), st, 0) == NULL);
 }
 
 /**
@@ -94,7 +94,7 @@ int _myalias(inf_t *inf)
 
 	if (inf->argcu == 1)
 	{
-		n = inf->ali;
+		n = inf->alias;
 		while (n)
 		{
 			print_alias(n);
@@ -108,7 +108,7 @@ int _myalias(inf_t *inf)
 		if (pp)
 			set_alias(inf, inf->argvu[in]);
 		else
-			print_alias(nstar_with(inf->ali, inf->argvu[in], '='));
+			print_alias(nstar_with(inf->alias, inf->argvu[in], '='));
 	}
 
 	return (0);
