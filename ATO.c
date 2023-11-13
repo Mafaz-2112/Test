@@ -61,7 +61,7 @@ int ato(char *sh)
 			re *= 10;
 			re += (sh[in] - '0');
 		}
-		else if (fg == 1)
+		else if (g == 1)
 			g = 2;
 	}
 
