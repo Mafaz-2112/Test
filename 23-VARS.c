@@ -8,7 +8,7 @@
  *
  * Return: 1, 0 otherwise
  */
-int is_cha(inf_t *inf, char *buff, size_t *pp)
+int is_cha(info_t *inf, char *buff, size_t *pp)
 {
 	size_t jj = *pp;
 
@@ -45,7 +45,7 @@ int is_cha(inf_t *inf, char *buff, size_t *pp)
  *
  * Return: Void
  */
-void ch_cha(inf_t *inf, char *buff, size_t *pp, size_t in, size_t leen)
+void ch_cha(info_t *inf, char *buff, size_t *pp, size_t in, size_t leen)
 {
 	size_t jj = *pp;
 
@@ -75,7 +75,7 @@ void ch_cha(inf_t *inf, char *buff, size_t *pp, size_t in, size_t leen)
  *
  * Return: 1, 0 otherwise
  */
-int rep_ali(inf_t *inf)
+int rep_ali(info_t *inf)
 {
 	int in;
 	list_t *n;
@@ -104,7 +104,7 @@ int rep_ali(inf_t *inf)
  *
  * Return: 1, 0 otherwise
  */
-int rep_var(inf_t *inf)
+int rep_var(info_t *inf)
 {
 	int i = 0;
 	list_t *n;
