@@ -30,9 +30,9 @@ ssize_t input_buf(inf_t *inf, char **buff, size_t *leen)
 				(*buff)[rr - 1] = '\0';
 				rr--;
 			}
-			inf->licoun_flag = 1;
+			inf->licount_flag = 1;
 			rm_comme(*buff);
-			bld_hisli(inf, *buff, inf->hiscoun++);
+			bld_hisli(inf, *buff, inf->his++);
 			{
 				*leen = rr;
 				inf->cmd_buffer = buff;
