@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: 0
  */
-int my_envo(inf_t *inf)
+int my_envo(info_t *inf)
 {
 	pr_li_string(inf->env);
 	return (0);
