@@ -26,9 +26,9 @@ int main(int ach, char **avu)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				e_put(avu[0]);
+				e_puts(avu[0]);
 				e_puts(": 0: Can't open ");
-				e_put(avu[1]);
+				e_puts(avu[1]);
 				e_putchar('\n');
 				e_putchar(BUF_FLUSH);
 				exit(127);
