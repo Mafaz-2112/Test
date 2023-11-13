@@ -7,7 +7,7 @@
  *        constant function prototype.
  *  Return:  0
  */
-int my_his(inf_t *inf)
+int my_his(info_t *inf)
 {
 	p_li(inf->history);
 	return (0);
@@ -20,7 +20,7 @@ int my_his(inf_t *inf)
  *
  * Return: Always 0 on success, 1 on error
  */
-int unset_alias(inf_t *inf, char *st)
+int unset_alias(info_t *inf, char *st)
 {
 	char *pp, ch;
 	int rets;
@@ -43,7 +43,7 @@ int unset_alias(inf_t *inf, char *st)
  *
  * Return:  0 , 1 on error
  */
-int set_alias(inf_t *inf, char *st)
+int set_alias(info_t *inf, char *st)
 {
 	char *pp;
 
@@ -86,7 +86,7 @@ int print_alias(list_t *n)
  *          constant function prototype.
  *  Return:  0
  */
-int _myalias(inf_t *inf)
+int _myalias(info_t *inf)
 {
 	int in = 0;
 	char *pp = NULL;
