@@ -12,22 +12,22 @@ int is_cha(inf_t *inf, char *buff, size_t *pp)
 {
 	size_t jj = *pp;
 
-	if (buf[jj] == '|' && buf[jj + 1] == '|')
+	if (buff[jj] == '|' && buff[jj + 1] == '|')
 	{
-		buf[jj] = 0;
+		buff[jj] = 0;
 		jj++;
-		inf->cmd_buf_type = CMD_OR;
+		inf->cmd_buffer_t = CMD_OR;
 	}
 	else if (buff[jj] == '&' && buff[jj + 1] == '&')
 	{
 		buff[jj] = 0;
 		jj++;
-		inf->cmd_buf_type = CMD_AND;
+		inf->cmd_buffer_t = CMD_AND;
 	}
 	else if (buff[jj] == ';')
 	{
 		buff[jj] = 0;
-		inf->cmd_buf_type = CMD_CHAIN;
+		inf->cmd_buffer_t = CMD_CHAIN;
 	}
 	else
 		return (0);
@@ -49,7 +49,7 @@ void ch_cha(inf_t *inf, char *buff, size_t *pp, size_t in, size_t leen)
 {
 	size_t jj = *pp;
 
-	if (inf->cmd_buf_type == CMD_AND)
+	if (inf->cmd_buffer_t == CMD_AND)
 	{
 		if (inf->stts)
 		{
@@ -57,7 +57,7 @@ void ch_cha(inf_t *inf, char *buff, size_t *pp, size_t in, size_t leen)
 			jj = leen;
 		}
 	}
-	if (inf->cmd_buf_type == CMD_OR)
+	if (inf->cmd_buffer_t == CMD_OR)
 	{
 		if (!inf->stts)
 		{
@@ -83,7 +83,7 @@ int rep_ali(inf_t *inf)
 
 	for (in = 0; in < 10; in++)
 	{
-		n = nstar_with(inf->ali, inf->argvu[0], '=');
+		n = nstar_with(inf->alias, inf->argvu[0], '=');
 		if (!n)
 			return (0);
 		free(inf->argvu[0]);
@@ -122,11 +122,11 @@ int rep_var(inf_t *inf)
 		}
 		if (!_strcmp(inf->argvu[i], "$$"))
 		{
-			rep_str & (inf->argvu[i]),
-					_strdup(conv_num(getpid(), 10, 0));
+			rep_str(&(inf->argvu[i]),
+					_strdup(conv_num(getpid(), 10, 0)));
 			continue;
 		}
-		n = nstar_with(inf->envo, &inf->argvu[i][1], '=');
+		n = nstar_with(inf->env, &inf->argvu[i][1], '=');
 		if (n)
 		{
 			rep_str(&(inf->argvu[i]),
