@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "eshell.h"
 
 /**
  * bfre - frees a pointer and NULLs the address
