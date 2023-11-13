@@ -33,7 +33,7 @@ int errato(char *st)
  * @est: string containing specified error type
  * Return: 0, otherwise -1 on error
  */
-void p_error(inf_t *inf, char *est)
+void p_error(info_t *inf, char *est)
 {
 	e_puts(inf->file_name);
 	e_puts(": ");
