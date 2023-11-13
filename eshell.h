@@ -60,9 +60,9 @@ typedef struct passinfo
 	int er_nu;
 	int licount_flag;
 	char *file_name;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
+	int *env;
+	int *history;
+	int *alias;
 	char **envoro;
 	int envo_cha;
 	int stts;
