@@ -26,7 +26,7 @@ int hsh(inf_t *inf, char **avl)
 			if (builtin_ret == -1)
 				find_cmnd(inf);
 		}
-		else if (interactive(inf))
+		else if (intive(inf))
 			_putchar('\n');
 		fre_inf(inf, 0);
 	}
@@ -86,10 +86,10 @@ void find_cmnd(inf_t *inf)
 	int i, k;
 
 	inf->pth = inf->argvu[0];
-	if (inf->licoun_flag == 1)
+	if (inf->licount_flag == 1)
 	{
 		inf->li_coun++;
-		inf->licoun_flag = 0;
+		inf->licount_flag = 0;
 	}
 	for (i = 0, k = 0; inf->argu[i]; i++)
 		if (!isde(inf->argu[i], " \t\n"))
