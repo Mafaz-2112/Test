@@ -9,7 +9,7 @@
 
 char *get_hisf(info_t *inf)
 {
-	char *buff, *dirct, 
+	char *buff, *dirct;
 
 	dirct = get_envo(inf, "HOME=");
 	if (!dirct)
