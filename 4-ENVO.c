@@ -85,8 +85,8 @@ int pop_envo_lis(info_t *inf)
 	list_t *n = NULL;
 	size_t in;
 
-	for (in = 0; envoro[in]; in++)
-		ad_nend(&n, envoro[in], 0);
+	for (in = 0; environ[in]; in++)
+		ad_nend(&n, environ[in], 0);
 	inf->env = n;
 	return (0);
 }
