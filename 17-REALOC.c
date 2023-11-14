@@ -20,15 +20,18 @@ char *mem_set(char *sh, char bs, unsigned int ni)
  * ffre - frees a string of strings
  * @pp: string of strings
  */
-void ffre(char **pp)
-{
-	char **ae = pp;
+void ffre(char **pp) {
+    char **ae = pp;
 
-	if (!pp)
-		return;
-	while (*pp)
-		bfre(&pp++);
-	free(ae);
+    if (!pp || !*pp)
+        return;
+
+    while (*pp) {
+        bfre(pp);
+        pp++;
+    }
+
+    free(ae);
 }
 
 /**
