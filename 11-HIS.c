@@ -9,7 +9,8 @@
 
 char *get_hisf(info_t *inf)
 {
-	char *buff, *dirct, char env_var[] = "HOME=";
+	char *buff, *dirct, 
+	char env_var[] = "HOME=";
 
 	dirct = get_envo(env_var);
 	if (!dirct)
