@@ -8,13 +8,13 @@
  */
 char **get_envo(info_t *inf)
 {
-	if (!inf->envoro || inf->envo_cha)
+	if (!inf->environ || inf->envo_cha)
 	{
-		inf->envoro = li_str(inf->env);
+		inf->environ = li_str(inf->env);
 		inf->envo_cha = 0;
 	}
 
-	return (inf->envoro);
+	return (inf->environ);
 }
 
 /**
