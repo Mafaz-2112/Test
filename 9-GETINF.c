@@ -63,8 +63,8 @@ void fre_inf(info_t *inf, int al)
 			fre_li(&(inf->history));
 		if (inf->alias)
 			fre_li(&(inf->alias));
-		ffre(inf->envoro);
-			inf->envoro = NULL;
+		ffre(inf->environ);
+			inf->environ = NULL;
 		bfre((void **)inf->cmd_buffer);
 		if (inf->refd > 2)
 			close(inf->refd);
