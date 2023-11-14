@@ -32,7 +32,7 @@ int hsh(info_t *inf, char **avl)
 	}
 	w_his(inf);
 	fre_inf(inf, 1);
-	if (!interactive(inf) && inf->stts)
+	if (!intive(inf) && inf->stts)
 		exit(inf->stts);
 	if (builtin_ret == -2)
 	{
