@@ -9,9 +9,9 @@
 
 char *get_hisf(info_t *inf)
 {
-	char *buff, *dirct;
+	char *buff, *dirct, char env_var[] = "HOME=";
 
-	dirct = get_envo("HOME=");
+	dirct = get_envo(env_var);
 	if (!dirct)
 		return (NULL);
 	buff = malloc(sizeof(char) * (_strlen(dirct) + _strlen(HIST_FILE) + 2));
