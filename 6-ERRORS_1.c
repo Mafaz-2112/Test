@@ -77,7 +77,7 @@ int put_fd(char *st, int f_d)
 		return (0);
 	while (*st)
 	{
-		in += put_fd(*st++, f_d);
+		in += put_fd(st++, f_d);
 	}
 	return (in);
 }
