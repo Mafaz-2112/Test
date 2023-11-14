@@ -27,7 +27,7 @@ void ffre(char **pt)
 	if (!pt)
 		return;
 	while (pt)
-		bfre((void**)&pt++);
+		bfre(&pt++);
 	free(ae);
 }
 
