@@ -24,7 +24,7 @@
 #define USE_STRTOK 0
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
-extern char **envoro;
+extern char **environ;
 
 /**
  * struct liststr - singly linked list
@@ -52,7 +52,7 @@ typedef struct liststr
  * @licoun_flag: if on count this line of input
  * @file_name: the program filename
  * @envo: linked list local copy of environ
- * @envoro: custom modified copy of environ from LL env
+ * @environ: custom modified copy of environ from LL env
  * @his: the history node
  * @ali: the alias node
  * @envo_cha: on if environ was changed
@@ -75,7 +75,7 @@ typedef struct passinfo
 	list_t *env;
 	list_t *history;
 	list_t *alias;
-	char **envoro;
+	char **environ;
 	int envo_cha;
 	int stts;
 
