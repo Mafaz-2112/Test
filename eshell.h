@@ -122,7 +122,7 @@ void p_error(info_t *, char *);
 int pr_d(int, int);
 char *conv_num(long int, int, int);
 void rm_comme(char *);
-char **get_envo(info_t *);
+char **get_envo(info_t *, inf);
 int un_setenvo(info_t *, char *);
 int set_env(info_t *, char *, char *);
 int my_his(info_t *);
