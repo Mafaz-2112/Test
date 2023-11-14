@@ -11,7 +11,7 @@ char *get_hisf(info_t *inf)
 {
 	char *buf, *dir;
 
-	dir = get_envo(inf);
+	dir = get_envo(inf, "HOME=");
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
