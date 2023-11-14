@@ -9,20 +9,21 @@
 
 char *get_hisf(info_t *inf)
 {
-	char *buff, *dirct;
+	char *buf, *dir;
 
-	dirct = get_envo(inf);
-	if (!dirct)
+	dir = get_enov(inf, "HOME=");
+	if (!dir)
 		return (NULL);
-	buff = malloc(sizeof(char) * (_strlen(dirct) + _strlen(HIST_FILE) + 2));
-	if (!buff)
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	if (!buf)
 		return (NULL);
-	buff[0] = 0;
-	_strcpy(buff, dirct);
-	_strcat(buff, "/");
-	_strcat(buff, HIST_FILE);
-	return (buff);
+	buf[0] = 0;
+	_strcpy(buf, dir);
+	_strcat(buf, "/");
+	_strcat(buf, HIST_FILE);
+	return (buf);
 }
+
 
 /**
  * w_his - creates a file, or appends to an existing file
