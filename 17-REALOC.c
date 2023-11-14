@@ -18,16 +18,16 @@ char *mem_set(char *sh, char bs, unsigned int ni)
 
 /**
  * ffre - frees a string of strings
- * @pt: string of strings
+ * @pp: string of strings
  */
-void ffre(char **pt)
+void ffre(char **pp)
 {
-	char **ae = pt;
+	char **ae = pp;
 
-	if (!pt)
+	if (!pp)
 		return;
-	while (pt)
-		bfre(pt++);
+	while (*pp)
+		bfre(*pp++);
 	free(ae);
 }
 
