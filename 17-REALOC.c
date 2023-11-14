@@ -20,19 +20,17 @@ char *mem_set(char *sh, char bs, unsigned int ni)
  * ffre - frees a string of strings
  * @pp: string of strings
  */
-void ffre(char **pp) {
-    char **ae = pp;
+void ffre(char **pp)
+{
+	char **ae = pp;
 
-    if (!pp || !*pp)
-        return;
-
-    while (*pp) {
-        bfre(pp);
-        pp++;
-    }
-
-    free(ae);
+	if (!pp)
+		return;
+	while (*pp)
+		free(*pp++);
+	free(ae);
 }
+
 
 /**
  * real_loc - reallocates a block of memory
