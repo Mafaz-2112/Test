@@ -56,12 +56,12 @@ char **li_str(list_t *headr)
 
 
 /**
- * pr_li - print all elements of a list_t linked list
+ * p_li - print all elements of a list_t linked list
  * @hed: pointer to first node
  *
  * Return: in
  */
-size_t pr_li(const list_t *hed)
+size_t p_li(const list_t *hed)
 {
 	size_t in = 0;
 

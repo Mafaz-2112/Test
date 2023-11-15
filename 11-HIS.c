@@ -11,7 +11,13 @@ char *get_hisf(info_t *inf)
 {
 	char *buf, *dir;
 
-	dir = get_envo(inf, "HOME=");
+	char **env_var = get_envo(inf);
+
+	if (!env_var || !*env_var)
+		return (NULL);
+
+	dir = *env_var;
+
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
@@ -55,7 +61,7 @@ int w_his(info_t *inf)
 }
 
 /**
- * re_hist - reads history from file
+ * re_his - reads history from file
  * @inf: the parameter struct
  *
  * Return: 0 otherwise

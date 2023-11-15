@@ -81,12 +81,12 @@ int print_alias(list_t *n)
 }
 
 /**
- * _myalias - mimics the alias builtin (man alias)
+ * my_ali - mimics the alias builtin (man alias)
  * @inf: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return:  0
  */
-int _myalias(info_t *inf)
+int my_ali(info_t *inf)
 {
 	int in = 0;
 	char *pp = NULL;

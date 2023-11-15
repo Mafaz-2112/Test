@@ -1,7 +1,7 @@
 #include "eshell.h"
 
 /**
- * **sttow2 - splits a string into words
+ * **sttow1 - splits a string into words
  * @str: the input string
  * @d: the delimeter
  * Return: a pointer to an array of strings, or NULL on failure

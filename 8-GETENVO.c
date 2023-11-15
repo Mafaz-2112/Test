@@ -50,7 +50,7 @@ int un_setenvo(info_t *inf, char *varl)
 }
 
 /**
- * set_envo - Initialize a new environment variable,
+ * set_env - Initialize a new environment variable,
  *             or modify an existing one
  * @inf: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
@@ -58,7 +58,7 @@ int un_setenvo(info_t *inf, char *varl)
  * @val: the string env var value
  *  Return: 0
  */
-int set_envo(info_t *inf, char *varl, char *val)
+int set_env(info_t *inf, char *varl, char *val)
 {
 	char *buff = NULL;
 	list_t *n;

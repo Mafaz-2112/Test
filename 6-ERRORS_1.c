@@ -1,12 +1,12 @@
 #include "eshell.h"
 
 /**
- * e_put - prints an input string
+ * e_puts - prints an input string
  * @st: the string to be printed
  *
  * Return: NO
  */
-void e_put(char *st)
+void e_puts(char *st)
 {
 	int in = 0;
 
@@ -41,13 +41,13 @@ int e_putchar(char ch)
 }
 
 /**
- * e_putd - writes the character c to given fd
+ * e_putfd - writes the character c to given fd
  * @ch: The character to print
  * @f_d: The filedescriptor to write to
  *
  * Return: On success 1.
  */
-int e_putd(char ch, int f_d)
+int e_putfd(char ch, int f_d)
 {
 	static int in;
 	static char buff[WRITE_BUF_SIZE];

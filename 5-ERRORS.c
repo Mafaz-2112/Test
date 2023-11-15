@@ -134,5 +134,5 @@ void rm_comme(char *buff)
 		{
 			buff[in] = '\0';
 			break;
-		} 
+		}
 }

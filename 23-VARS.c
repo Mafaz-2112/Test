@@ -1,14 +1,14 @@
 #include "eshell.h"
 
 /**
- * is_cha - test if current char in buffer is a chain delimeter
+ * is_chn - test if current char in buffer is a chain delimeter
  * @inf: the parameter struct
  * @buff: the char buffer
  * @pp: address of current position in buf
  *
  * Return: 1, 0 otherwise
  */
-int is_cha(info_t *inf, char *buff, size_t *pp)
+int is_chn(info_t *inf, char *buff, size_t *pp)
 {
 	size_t jj = *pp;
 
